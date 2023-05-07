@@ -1,8 +1,7 @@
+import Link from 'next/link'
 import './globals.css'
 import styles from './layout.module.css'
-import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,13 +14,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}> 
+    <html>
+      <head>
+        <title>연습</title>
+      </head>
+      <body> 
         <header className={styles.header}> {/*임포트한 css 모듈 styles파일 안에 있는 .header 선택자를 사용*/}
-          <h1 className={styles.nav_title}>Demo Note</h1>
+          <Link href="/">Demo Note</Link>
           <nav className={styles.nav}> {/*임포트한 css 모듈 styles파일 안에 있는 .nav 선택자를 사용*/}
-            <a href=''>Contact</a>
-            <a href=''>About</a>
+            <Link href='/products'>Products</Link>
+            <Link href='/about'>About</Link>
+            <Link href='/contact'>Contact</Link>
           </nav>
         </header>
         {children}
