@@ -1,0 +1,12 @@
+.nav_product {
+  border-bottom: solid 1px #132f52;
+}
+
+.nav_product a {
+  display: inline-block;
+  margin: 10px 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}

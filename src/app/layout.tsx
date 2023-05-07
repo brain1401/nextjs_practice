@@ -1,4 +1,5 @@
 import './globals.css'
+import styles from './layout.module.css'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -15,7 +16,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}> 
+        <header className={styles.header}> {/*임포트한 css 모듈 styles파일 안에 있는 .header 선택자를 사용*/}
+          <h1 className={styles.nav_title}>Demo Note</h1>
+          <nav className={styles.nav}> {/*임포트한 css 모듈 styles파일 안에 있는 .nav 선택자를 사용*/}
+            <a href=''>Contact</a>
+            <a href=''>About</a>
+          </nav>
+        </header>
+        {children}
+      </body>
     </html>
   )
 }

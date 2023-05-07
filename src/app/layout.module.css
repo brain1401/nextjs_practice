@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between; /*자식 아이템들이 일정한 공간을 가지게 한다.*/
+  align-items: center; /*자식 아이템들이 수직 정렬*/ 
+  padding: 8px;
+  border-bottom: 1px solid #132f52;
+}
+
+.nav a {
+  margin: 0 8px;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.nav_title {
+  margin: 10px;
+}
+
