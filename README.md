@@ -31,9 +31,11 @@ App폴더 내에 not-found.tsx를 생성하고 컴포넌트를 만들어 주면 
 
 <br/>
 
-## - **Root Layout**
+### - **Root Layout**
 
 ```tsx
+/* app/layout.tsx */
+
 export default function RootLayout({
   children,
 }: {
@@ -67,9 +69,11 @@ Next.js는 기본적으로 ```<html>```과 ```<body>``` 태그를 자동으로 �
 
 <br/>
 
-## - **Nesting Layouts**
+### - **Nesting Layouts**
 
 ```tsx
+/* app/products/layout.tsx */ 
+
 export default function DashboardLayout({
   children,
 }: {
@@ -110,6 +114,8 @@ app/products/pants/page.tsx
     app/products/pants/page.tsx
 
 RootLayout은 반드시 필요하기 때문에 RootLayout이 맨 위에 온다.
+
+<br/>
 
 ## Link 컴포넌트
 
@@ -160,10 +166,10 @@ metadata 객체는 위와 같이 구성되어 있다.
 
 <br/>
 
-## - 정적 SEO ( Static Metadata )
+### - 정적 SEO ( Static Metadata )
 
 ```tsx
-//app/page.tsx
+/* app/page.tsx */
 import type { Metadata } from 'next';
  
 export const metadata: Metadata = {
@@ -180,10 +186,10 @@ export default function Page() {
 
 <br/>
 
-## - 동적 SEO ( Dynamic Metadata )
+### - 동적 SEO ( Dynamic Metadata )
 
 ```tsx
-//app/products/[id]/page.tsx
+/* app/products/[id]/page.tsx */
 import type { Metadata } from 'next';
  
 // 'fetch' 응답이 캐시되어 아래의 두 함수 간에 재사용되므로 Single API Request가 된다. 
@@ -212,13 +218,13 @@ Next.js는 ```generateMetadata``` 내부의 데이터 가져오기가 완료될 
 
 <br/>
 
-## - JSON-LD
+### - JSON-LD
 
 JSON-LD는 검색 엔진이 콘텐츠를 이해하는 데 사용할 수 있는 구조화된 데이터 형식이다. 예를 들어 사람, 이벤트, 조직, 영화, 책, 레시피 및 기타 여러 유형의 엔티티를 설명하는 데 사용할 수 있다.
 
 
 ```tsx
-//app/products/[id]/page.tsx
+/* app/products/[id]/page.tsx */
 export default async function Page({ params }) {
   const product = await getProduct(params.id);
  
