@@ -140,3 +140,125 @@ Next.js에서 **경로 사이를 탐색하는 기본 방법**이다.
 <br/>
 
 className 또는 target="_blank"와 같은 ```<a>``` 태그의 속성은 ```<Link>```에 Props로 추가할 수 있으며 기본 ```<a>``` element로 전달된다.
+
+## SEO
+
+Next.js 13에서 SEO는 기본적으로 ```Metadata``` 객체를 사용한다.
+
+```tsx
+{
+  title: 'Home',
+  description: 'Welcome to Next.js',
+}
+```
+
+<br/>
+
+metadata 객체는 위와 같이 구성되어 있다.
+
+또한 상황에 따라 정적, 동적으로 SEO를 할 수 있다.
+
+<br/>
+
+## - 정적 SEO ( Static Metadata )
+
+```tsx
+//app/page.tsx
+import type { Metadata } from 'next';
+ 
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Welcome to Next.js',
+};
+ 
+export default function Page() {
+  return '...';
+}
+```
+
+원하는 page.tsx나 layout.tsx파일에 위와 같이 코드를 작성하여 SEO ( Static Metadata )를 적용할 수 있다.
+
+<br/>
+
+## - 동적 SEO ( Dynamic Metadata )
+
+```tsx
+//app/products/[id]/page.tsx
+import type { Metadata } from 'next';
+ 
+// 'fetch' 응답이 캐시되어 아래의 두 함수 간에 재사용되므로 Single API Request가 된다. 
+// 'fetch'를 직접 사용할 수 없는 경우 'cache'를 사용할 수 있다. 
+// 자세히 알아보기: https://beta.nextjs.org/docs/data-fetching/caching
+
+async function getProduct(id) {
+  const res = await fetch(`https://.../api/products/${id}`);
+  return res.json();
+}
+ 
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const product = await getProduct(params.id);
+  return { title: product.title };
+}
+ 
+export default async function Page({ params }) {
+  const product = await getProduct(params.id);
+  // ...
+}
+```
+
+```generateMetadata```를 사용하여 동적 값이 필요한 메타데이터를 설정할 수 있다.
+
+Next.js는 ```generateMetadata``` 내부의 데이터 가져오기가 완료될 때까지 기다렸다가 클라이언트로 UI를 스트리밍합니다. 이렇게 하면 스트리밍된 응답의 첫 부분에 ```<head>``` 태그가 포함되도록 보장합니다.
+
+<br/>
+
+## - JSON-LD
+
+JSON-LD는 검색 엔진이 콘텐츠를 이해하는 데 사용할 수 있는 구조화된 데이터 형식이다. 예를 들어 사람, 이벤트, 조직, 영화, 책, 레시피 및 기타 여러 유형의 엔티티를 설명하는 데 사용할 수 있다.
+
+
+```tsx
+//app/products/[id]/page.tsx
+export default async function Page({ params }) {
+  const product = await getProduct(params.id);
+ 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: product.image,
+    description: product.description,
+  };
+ 
+  return (
+    <section>
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* ... */}
+    </section>
+  );
+}
+```
+
+현재 학습중인 **Next.js 13.4** 버전에서 JSON-LD에 대한 **권장 사항**은 위와 같이 ```layout.tsx``` 또는 ```page.tsx``` 컴포넌트에서 구조화된 데이터를 ```<script>``` 태그로 렌더링하는 것이다.
+
+또한 Google용 **Rich Results Test** 또는 **General Schema Markup Validator**를 사용하여 구조화된 데이터의 유효성을 검사하고 테스트할 수 있다.
+
+```schema-dts```와 같은 커뮤니티 패키지를 사용하여 ```TypeScript```로 JSON-LD를 입력할 수 있다.
+
+```tsx
+import { Product, WithContext } from 'schema-dts';
+ 
+const jsonLd: WithContext<Product> = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Next.js Sticker',
+  image: 'https://nextjs.org/imgs/sticker.png',
+  description: 'Dynamic at the speed of static.',
+};
+```
+
+<br/>
