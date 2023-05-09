@@ -273,3 +273,7 @@ const jsonLd: WithContext<Product> = {
 ```
 
 <br/>
+
+## next.js의 이점
+
+```<Link>``` 컴포넌트와 ```<Image>``` 컴포넌트 등 Next.js에서 제공하는 유용한 기능들이 일반 리액트를 사용했을 때 보다 최적화를 쉽게 해 준다.
