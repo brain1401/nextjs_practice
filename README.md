@@ -308,7 +308,7 @@ const jsonLd: WithContext<Product> = {
    
 4.  서버 상에서 동작하기 떄문에 아래와 같은 것들이 **가능**하다.
 
-  >-  NodeAPI들을 사용할 수 있다.
+   >-  NodeAPI들을 사용할 수 있다.
   
    >- Node에서 동작하는 코드이기 때문에 Node에서 할 수 있는 것들은 다 가능하다.
 
