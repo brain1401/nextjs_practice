@@ -1,8 +1,8 @@
 # Next.js 13 타입스크립트 연습
 
-<br/>
+</br>
 
-<br/>
+</br>
 
 ## 라우팅
 
@@ -10,7 +10,7 @@ src/app 폴더 내에 **page.tsx** 파일은 처음 홈페이지에 들어갔을
 
 또한 src/app 폴더 내에 특정한 이름으로 폴더를 만든 다음 그 안에 **page.tsx** 파일을 만들면 홈페이지 주소/폴더이름 으로 접속했을 때 해당 폴더 내의 **page.tsx**의 내용이 보여진다.
 
-<br/>
+</br>
 
 ## 다이나믹 라우트
 
@@ -20,16 +20,16 @@ src/app 폴더 내에 **page.tsx** 파일은 처음 홈페이지에 들어갔을
 
 이를 바탕으로 다이나믹 라우트를 할 수 있다.
 
-<br/>
+</br>
 
 ## not-found 설정
 App폴더 내에 not-found.tsx를 생성하고 컴포넌트를 만들어 주면 사용자가 비정상적인 경로로 접근할 시 해당 컴포넌트를 보여줌.
 
-<br/>
+</br>
 
 ## Root Layout과 Lested Layout
 
-<br/>
+</br>
 
 ### - **Root Layout**
 ---
@@ -68,7 +68,7 @@ Next.js는 기본적으로 ```<html>```과 ```<body>``` 태그를 자동으로 �
 
 따라서 네비게이션 바 같은 기능을 손쉽게 만들 수 있다.
 
-<br/>
+</br>
 
 ### - **Nesting Layouts**
 ---
@@ -87,7 +87,7 @@ export default function DashboardLayout({
 
 App디렉토리를 제외한 특정한 폴더에 layout.tsx라는 이름으로 파일을 만들어 Layout을 사용할 수 있다.
 
-<br/>
+</br>
 
 예를 들어,
 
@@ -101,7 +101,7 @@ app/products/pants/page.tsx
 
 가 존재할 경우
 
-<br/>
+</br>
 
 감싸는 구조는 다음과 같다.
 
@@ -117,11 +117,11 @@ app/products/pants/page.tsx
 
 RootLayout은 반드시 필요하기 때문에 RootLayout이 맨 위에 온다.
 
-<br/>
+</br>
 
 ## Link 컴포넌트
 
-<br/>
+</br>
 
 ```tsx
 import Link from 'next/link';
@@ -135,7 +135,7 @@ export default function Page() {
 
 Next.js에서 **경로 사이를 탐색하는 기본 방법**이다.
 
-<br/>
+</br>
 
 ```<Link>``` 컴포넌트에 사용할 수 있는 Props에 대한 요약은 다음과 같다.
 
@@ -145,7 +145,7 @@ Next.js에서 **경로 사이를 탐색하는 기본 방법**이다.
 | replace  | replace={false}   | Boolean          | -        |
 | prefetch | prefetch={false}  | Boolean          | -        |
 
-<br/>
+</br>
 
 className 또는 target="_blank"와 같은 ```<a>``` 태그의 속성은 ```<Link>```에 Props로 추가할 수 있으며 기본 ```<a>``` element로 전달된다.
 
@@ -160,13 +160,13 @@ Next.js 13에서 SEO는 기본적으로 ```Metadata``` 객체를 사용한다.
 }
 ```
 
-<br/>
+</br>
 
 metadata 객체는 위와 같이 구성되어 있다.
 
 또한 상황에 따라 정적, 동적으로 SEO를 할 수 있다.
 
-<br/>
+</br>
 
 ### - 정적 SEO ( Static Metadata )
 ---
@@ -187,7 +187,7 @@ export default function Page() {
 
 원하는 page.tsx나 layout.tsx파일에 위와 같이 코드를 작성하여 SEO ( Static Metadata )를 적용할 수 있다.
 
-<br/>
+</br>
 
 ### - 동적 SEO ( Dynamic Metadata )
 ---
@@ -220,7 +220,7 @@ export default async function Page({ params }) {
 
 Next.js는 ```generateMetadata``` 내부의 데이터 가져오기가 완료될 때까지 기다렸다가 클라이언트로 UI를 스트리밍합니다. 이렇게 하면 스트리밍된 응답의 첫 부분에 ```<head>``` 태그가 포함되도록 보장합니다.
 
-<br/>
+</br>
 
 ### - JSON-LD
 ---
@@ -272,7 +272,7 @@ const jsonLd: WithContext<Product> = {
 };
 ```
 
-<br/>
+</br>
 
 ## Next.js의 기본 작동방식/이점
 
@@ -289,22 +289,22 @@ const jsonLd: WithContext<Product> = {
 
 - Next.js 13 버전부터는 **클라이언트/서버 컴포넌트를 이용**하여 **컴포넌트 단위로 쿨라이언트/서버 렌더링이 가능**하게 됐다.
 
-<br/>
+</br>
 
 - ```<Link>``` 컴포넌트와 ```<Image>``` 컴포넌트 등 Next.js에서 제공하는 유용한 기능들이 일반 리액트를 사용했을 때 보다 최적화를 쉽게 해 준다.
 
-<br/>
+</br>
 
 ## 서버/클라이언트 컴포넌트
 
 ### - 서버 컴포넌트
 ---
 
-1. 서버 컴포넌트는 **서버에서 실행**된다.<br/><br/>
+1. 서버 컴포넌트는 **서버에서 실행**된다.</br></br>
 
 2. 코드는 **서버에서 실행**되어서 **pre-rendering 된 HTML형태**로 만들어서 브라우저에 전송함. 
    
-   따라서 컴포넌트에서 **Return된 jsx를 제외**하고 ```console.log()``` 등  **서버컴포넌트 안에서 사용한 코드**는 사용자 브라우저가 아니라 **서버의 NodeJS에서 실행**됨. <br/><br/>
+   따라서 컴포넌트에서 **Return된 jsx를 제외**하고 ```console.log()``` 등  **서버컴포넌트 안에서 사용한 코드**는 사용자 브라우저가 아니라 **서버의 NodeJS에서 실행**됨. </br></br>
       
 3. 서버 상에서 동작하기 때문에 아래와 같은 것들 등이 **불가능**하다.
   
@@ -319,7 +319,7 @@ const jsonLd: WithContext<Product> = {
   - 메모리 저장하는 것
 
 
-  <br/><br/>
+  </br></br>
    
 4.  서버 상에서 동작하기 떄문에 아래와 같은 것들이 **가능**하다.
 
@@ -341,7 +341,7 @@ const jsonLd: WithContext<Product> = {
 
    - 서버 상에 있는 데이터베이스 입출력을 할 수 있다.
    
-   <br/><br/>
+   </br></br>
 
 ### - 클라이언트 컴포넌트
 ---
@@ -352,4 +352,23 @@ const jsonLd: WithContext<Product> = {
 
 3. 클라이언트 컴포넌트는 클라이언트와의 상호작용을 가능하게 해 준다.
 
-<br/>
+</br>
+
+## 렌더링
+
+### - SSG ( Static Site Generation )
+
+SSG는 프로젝트 빌드 시 정적으로 HTML을 미리 생성해서 요청이 올 때마다 이것을 재사용 하는 기술이다.
+
+기본적으로 Nextjs는 빌드 시 SSG로 사용 가능한 Page( fetch가 일어나지 않는 Page 등 )는 알아서 SSG로 동작하게 만든다.
+
+</br>
+
+### - ISR 
+
+ISR로 만들 페이지 상단에 값을 export시켜주면 된다.
+
+```tsx
+export const revalidate = 3; //3초마다 ISR을 진행
+```
+
