@@ -1,13 +1,13 @@
 import Link from "next/link";
 import styles from './page.module.css'
 import { Product, getProducts } from "@/service/products";
-import MeowArticle from "@/components/MoewArticle";
-
-// export const revalidate = 3; //3초마다 ISR을 진행
+import { getMeowArticle } from "@/service/getMoewArticle";
 
 export default async function ProductsPage() {
 
   const products = await getProducts();
+  const meowdata = await getMeowArticle();
+
   return (
     <div className={styles.mainbody}>
       <h1>제품 소개 페이지!</h1>
@@ -19,7 +19,7 @@ export default async function ProductsPage() {
           </li>
         ))}
       </ul>
-      <MeowArticle/>
+      {meowdata}
     </div>
   );
 }

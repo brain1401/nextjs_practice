@@ -42,16 +42,16 @@ export default async function ProductPage({ params: { slug } }: Props) {
   }
   
 }
-export async function generateStaticParams() {
-  //모든 제품의 아이디값과 man, women으로 route해서 접속하는 페이지들을 미리 만들어 둘 수 있게 하는 사전 정의된 Nextjs함수 (SSG)
+// export async function generateStaticParams() {
+//   //모든 제품의 아이디값과 man, women으로 route해서 접속하는 페이지들을 미리 만들어 둘 수 있게 하는 사전 정의된 Nextjs함수 (SSG)
 
-  const products = await getProducts(); //서버 내의 products.json에서 모든 제품 데이터를 받아옴
+//   const products = await getProducts(); //서버 내의 products.json에서 모든 제품 데이터를 받아옴
 
-  const resultArray = products.map((product) => ({
-    slug: product.id,
-  })); 
+//   const resultArray = products.map((product) => ({
+//     slug: product.id,
+//   })); 
 
-  resultArray.push({ slug: "man" }, { slug: "women" }); // 마지막에 man과 womem을 배열에 push해줌
+//   resultArray.push({ slug: "man" }, { slug: "women" }); // 마지막에 man과 womem을 배열에 push해줌
 
-  return resultArray;
-}
+//   return resultArray;
+// }
