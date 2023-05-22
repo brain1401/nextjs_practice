@@ -5,6 +5,7 @@ export type Product = {
   id: string;
   name: string;
   price: number;
+  image: string;
 };
 
 
@@ -22,3 +23,4 @@ export async function getProduct(id: string):Promise<Product | undefined>{
   const products = await getProducts();
   return products.find(item => item.id === id)
 }
+

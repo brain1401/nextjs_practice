@@ -4,7 +4,7 @@ export async function getMeowArticle():Promise<string> {
       cache: "no-store",
     });
     const data = await res.json();
-    const text:string = data.data[0]; 
+    let text:string = data.data[0]; 
 
   return text;
 }
