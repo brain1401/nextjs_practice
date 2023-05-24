@@ -1,5 +1,5 @@
 import NotFoundPage from "@/app/not-found";
-import { getProduct, getProducts} from "@/service/products";
+import { getProduct, getProducts, checkProductAndReturn} from "@/service/products";
 import Image from "next/image";
 
 import { Metadata } from "next";
@@ -26,16 +26,7 @@ export async function generateMetadata({
 export default async function ProductPage({ params: { slug } }: Props) {
   let finalProductName: string | undefined = undefined;
 
-  if (slug === "women" || slug === "man") {
-    finalProductName = slug;
-  } 
-  else {
-    const product = await getProduct(slug);
-
-    if (product !== undefined) {
-      finalProductName = product.name;
-    }
-  }
+  finalProductName = await checkProductAndReturn(slug); //man이나 woman으로 slug가 들어오면 그 문자열이 들어감. 
 
   if (finalProductName === undefined) {
     return NotFoundPage();
