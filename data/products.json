@@ -16,5 +16,17 @@
     "name": "부츠",
     "price": 12000,
     "image": "shoes.jpg"
+  },
+  {
+    "id": "man",
+    "name": "남성옷",
+    "price": null,
+    "image": "manKind.png"
+  },
+  {
+    "id": "women",
+    "name": "여성옷",
+    "price": null,
+    "image": "womenKind.png"
   }
 ]
