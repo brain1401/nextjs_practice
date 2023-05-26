@@ -1,8 +1,9 @@
-import NotFoundPage from "@/app/not-found";
 import { getProduct, getProducts} from "@/service/products";
 import Image from "next/image";
 
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
+import GoProductsButton from "@/components/GoProductsButton";
 
 export const revalidate = 3; //3초마다 ISR을 진행
 
@@ -12,8 +13,7 @@ type Props = {
   };
 };
 
-export async function generateMetadata({
-  //Metadata 생성하는 함수
+export async function generateMetadata({ //Metadata 생성하는 함수
   params: { slug },
 }: Props): Promise<Metadata> {
   const product = await getProduct(slug);
@@ -26,11 +26,16 @@ export async function generateMetadata({
 export default async function ProductPage({ params: { slug } }: Props) {
   const product = await getProduct(slug);
 
+  if(!product) {
+    redirect('/products'); //존재하지 않는 slug가 들어올 시 /products로 리다이렉트 시켜줌
+  }
+
   if(product !== undefined) {
     return(
       <>
         <h1>{product.name} 상품 페이지</h1>
         <Image src={`/images/${product.image}`} alt={product.name} width={400} height={400}/>
+        <GoProductsButton/>
       </>
     )
   }
