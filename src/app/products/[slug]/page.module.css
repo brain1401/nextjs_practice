@@ -1,0 +1,23 @@
+.productSection {
+   width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productSection h1{
+  text-align: center;
+}
+
+.button{
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+}
+
+
+.image {
+  display: block;
+  margin-bottom: 10px;
+}
+
