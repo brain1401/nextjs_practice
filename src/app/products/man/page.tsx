@@ -1,5 +1,5 @@
 import Image from "next/image"
-import manImage from '@/images/mankind.png';
+import manImage from '../../../../public/images/manKind.png';
 
 export default function ManProducts() {
 

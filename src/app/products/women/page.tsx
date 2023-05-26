@@ -1,5 +1,5 @@
 import Image from "next/image";
-import manImage from "@/images/womenkind.jpg";
+import manImage from "../../../../public/images/womenKind.jpg";
 
 export default function WomenProducts() {
   return (
