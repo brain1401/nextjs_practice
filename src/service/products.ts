@@ -23,22 +23,3 @@ export async function getProduct(id: string):Promise<Product | undefined>{
   const products = await getProducts();
   return products.find(item => item.id === id)
 }
-
-
-export async function checkProductAndReturn(id:string) {
-
-  let finalProductName:string = "";
-
-  if (id === "women" || id === "man") {
-    finalProductName = id;
-  } 
-  else {
-    const product = await getProduct(id);
-
-    if (product !== undefined) {
-      finalProductName = product.name;
-    }
-  }
-
-  return finalProductName;
-}

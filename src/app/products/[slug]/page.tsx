@@ -1,5 +1,5 @@
 import NotFoundPage from "@/app/not-found";
-import { getProduct, getProducts, checkProductAndReturn} from "@/service/products";
+import { getProduct, getProducts} from "@/service/products";
 import Image from "next/image";
 
 import { Metadata } from "next";
@@ -24,24 +24,20 @@ export async function generateMetadata({
 }
 
 export default async function ProductPage({ params: { slug } }: Props) {
-  let finalProductName: string | undefined = undefined;
+  const product = await getProduct(slug);
 
-  finalProductName = await checkProductAndReturn(slug); //man이나 woman으로 slug가 들어오면 그 문자열이 들어감. 
-
-  if (finalProductName === undefined) {
-    return NotFoundPage();
-  } 
-  else {
-    const product = await getProduct(slug);
-
-    return (
+  if(product !== undefined) {
+    return(
       <>
-        <h1>{finalProductName} 상품 페이지</h1>
-        <Image src={`/images/${product?.image}`} alt={finalProductName} width={400} height={400}/>
+        <h1>{product.name} 상품 페이지</h1>
+        <Image src={`/images/${product.image}`} alt={product.name} width={400} height={400}/>
       </>
-    );
+    )
   }
 }
+
+
+
 export async function generateStaticParams() {
   //모든 제품의 아이디값과 man, women으로 route해서 접속하는 페이지들을 미리 만들어 둘 수 있게 하는 사전 정의된 Nextjs함수 (SSG)
 
