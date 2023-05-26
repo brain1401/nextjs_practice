@@ -37,7 +37,7 @@ export default async function ProductPage({ params: { slug } }: Props) {
     return (
       <>
         <div className={styles.productSection}>
-          <h1>{product.name} 상품 페이지</h1>
+          <h1>{product.name} 상품 페이지잉이ㅣㅇ</h1>
           <Image
             src={`/images/${product.image}`}
             alt={product.name}
