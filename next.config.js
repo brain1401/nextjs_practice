@@ -12,7 +12,7 @@ const nextConfig = {
     ]
   },
 
-  async redirects() { //redirect 설정 
+  async redirects() { //redirect 설정 | redirect는 A를 B로 다시 대리고 가는 느낌
     return [
       {
         source: "/products/deleted_forever",
@@ -25,8 +25,17 @@ const nextConfig = {
         permanent: false,
       },
     ];
+  },
 
+  async rewrites() { //rewrite는 복잡하고 거추장한 url을 쉬운 url로 대체하는 것이다.
+    return [
+      {
+        source: '/items/:slug',
+        destination: '/products/:slug',
+      }
+    ];
   }
+
 }
 
 module.exports = nextConfig
